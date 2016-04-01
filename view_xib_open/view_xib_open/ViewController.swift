@@ -10,21 +10,21 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		// Do any additional setup after loading the view, typically from a nib.
+	}
+	override func viewWillAppear(animated: Bool) {
+	}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    @IBAction func showViewTapped(sender: AnyObject) {
-        let view = customview.loadFromNibNamed("customview")
-        view?.frame = self.view.frame
-        self.view.addSubview(view!)
-    }
-
-
+	@IBOutlet weak var _btnShowView: UIButton!
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
+	}
+	@IBAction func showViewTapped(sender: AnyObject) {
+		let view = customview.loadFromNibNamed("customview")
+		view?.frame = self.view.frame
+		self.view.addSubview(view!)
+	}
 }
-
