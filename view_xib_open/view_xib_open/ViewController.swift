@@ -24,7 +24,12 @@ class ViewController: UIViewController {
 	}
 	@IBAction func showViewTapped(sender: AnyObject) {
 		let view = customview.loadFromNibNamed("customview")
-		view?.frame = self.view.frame
+		view!.frame = self.view.frame
 		self.view.addSubview(view!)
+        
+//		let view = UIView()
+//		view.backgroundColor = UIColor.redColor()
+//		view.frame = self.view.frame
+//		self.view.addSubview(view)
 	}
 }

@@ -17,7 +17,7 @@ class customview: UIView {
 	 // Drawing code
 	 }
 	 */
-	@IBAction func  backgroundBtnTapped(sender: AnyObject) {
+	@IBAction func backgroundBtnTapped(sender: AnyObject) {
 		print("backgrond tapped")
 		self.removeFromSuperview()
 	}
