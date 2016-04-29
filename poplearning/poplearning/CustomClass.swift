@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 import pop
 
-class GSSimpleImageView: UIImageView {
-    
+class GSSimpleImageView: UIImageView, POPAnimationDelegate {
+    var tempRect: CGRect?
     var bgView: UIView!
     
     var animated: Bool = true
@@ -40,16 +40,66 @@ class GSSimpleImageView: UIImageView {
     }
     //MARK: Actions of Gestures
     func exitFullScreen () {
-        bgView.removeFromSuperview()
+        let imageV = bgView.subviews[0] as! UIImageView
+        
+        let springAnimation = POPSpringAnimation(propertyNamed: kPOPViewFrame)
+        springAnimation.toValue = NSValue(CGRect: tempRect!)
+        springAnimation.name = "SomeAnimationNameYouChooseEnding"
+        springAnimation.springBounciness = 5.0
+        springAnimation.delegate = self
+        imageV.pop_addAnimation(springAnimation, forKey: "SomeAnimationNameYouChooseEnding")
+        
+        let basicAnimation = POPSpringAnimation(propertyNamed: kPOPLayerOpacity)
+        basicAnimation.toValue = 0
+        basicAnimation.name = "SomeAnimationNameYouChooseEnd"
+        basicAnimation.delegate = self
+        bgView.layer.pop_addAnimation(basicAnimation, forKey: "SomeAnimationNameYouChooseEnd")
+    }
+    
+    func pop_animationDidStop(anim: POPAnimation!, finished: Bool) {
+        if anim.name == "SomeAnimationNameYouChooseEnd" {
+            bgView.removeFromSuperview()
+        }
     }
     
     func fullScreenMe() {
-        let springAnimation = POPSpringAnimation(propertyNamed: kPOPViewAlpha)
-        springAnimation.toValue = NSValue(CGPoint: CGPointMake(0.8, 0.8))
-        springAnimation.velocity = NSValue(CGPoint: CGPointMake(2, 2))
-        springAnimation.springBounciness = 20.0
-        self.pop_addAnimation(springAnimation, forKey: "springAnimation")
+       
+        if let window = UIApplication.sharedApplication().delegate?.window {
+            bgView = UIView(frame: UIScreen.mainScreen().bounds)
+            bgView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(GSSimpleImageView.exitFullScreen)))
+            bgView.backgroundColor = UIColor.blackColor()
+            let imageV = UIImageView(image: self.image)
+            let point = self.convertRect(self.bounds, toView: self.parentViewController!.view)
+            imageV.frame = point
+            tempRect = point
+            imageV.contentMode = .ScaleAspectFit
+            self.bgView.addSubview(imageV)
+            window?.addSubview(bgView)
+            
+            if animated {
+                        let springAnimation = POPSpringAnimation(propertyNamed: kPOPViewFrame)
+                        let parentView = self.parentViewController?.view
+                        springAnimation.toValue = NSValue(CGRect: CGRectMake(0, 0, (parentView?.frame.width)!, (parentView?.frame.height)!))
+                        springAnimation.name = "SomeAnimationNameYouChoose"
+                        springAnimation.springBounciness = 10.0
+                        springAnimation.delegate = self
+                        imageV.pop_addAnimation(springAnimation, forKey: "SomeAnimationNameYouChoose")
+            }
+        }
         
     }
-    
+}
+
+
+extension UIView {
+    var parentViewController: UIViewController? {
+        var parentResponder: UIResponder? = self
+        while parentResponder != nil {
+            parentResponder = parentResponder!.nextResponder()
+            if let viewController = parentResponder as? UIViewController {
+                return viewController
+            }
+        }
+        return nil
+    }
 }
