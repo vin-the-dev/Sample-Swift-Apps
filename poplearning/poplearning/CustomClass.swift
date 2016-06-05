@@ -65,11 +65,14 @@ class GSSimpleImageView: UIImageView, POPAnimationDelegate {
     func fullScreenMe() {
        
         if let window = UIApplication.sharedApplication().delegate?.window {
+            
+            let parentView = self.findParentViewController(self)!.view
+            
             bgView = UIView(frame: UIScreen.mainScreen().bounds)
             bgView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(GSSimpleImageView.exitFullScreen)))
             bgView.backgroundColor = UIColor.blackColor()
             let imageV = UIImageView(image: self.image)
-            let point = self.convertRect(self.bounds, toView: self.parentViewController!.view)
+            let point = self.convertRect(self.bounds, toView: parentView)
             imageV.frame = point
             tempRect = point
             imageV.contentMode = .ScaleAspectFit
@@ -78,7 +81,6 @@ class GSSimpleImageView: UIImageView, POPAnimationDelegate {
             
             if animated {
                         let springAnimation = POPSpringAnimation(propertyNamed: kPOPViewFrame)
-                        let parentView = self.parentViewController?.view
                         springAnimation.toValue = NSValue(CGRect: CGRectMake(0, 0, (parentView?.frame.width)!, (parentView?.frame.height)!))
                         springAnimation.name = "SomeAnimationNameYouChoose"
                         springAnimation.springBounciness = 10.0
@@ -88,11 +90,8 @@ class GSSimpleImageView: UIImageView, POPAnimationDelegate {
         }
         
     }
-}
-
-
-extension UIView {
-    var parentViewController: UIViewController? {
+    
+    func findParentViewController(view: UIView) -> UIViewController? {
         var parentResponder: UIResponder? = self
         while parentResponder != nil {
             parentResponder = parentResponder!.nextResponder()
@@ -103,3 +102,17 @@ extension UIView {
         return nil
     }
 }
+
+
+//extension UIView {
+//    var parentViewController: UIViewController? {
+//        var parentResponder: UIResponder? = self
+//        while parentResponder != nil {
+//            parentResponder = parentResponder!.nextResponder()
+//            if let viewController = parentResponder as? UIViewController {
+//                return viewController
+//            }
+//        }
+//        return nil
+//    }
+//}
