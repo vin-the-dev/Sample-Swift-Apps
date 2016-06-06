@@ -30,10 +30,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
         createPolyline(_mapView)
         
         
-        //Title overlay
-        
-        let title = MKTileOverlay()
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,8 +77,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
     }
     
     func createPolyline(mapView: MKMapView) {
-        var point1 = CLLocationCoordinate2DMake(28.6139, 77.2090);
-        var point2 = CLLocationCoordinate2DMake(19.0760, 72.8777);
+        let point1 = CLLocationCoordinate2DMake(28.6139, 77.2090);
+        let point2 = CLLocationCoordinate2DMake(19.0760, 72.8777);
 //        var point3 = CLLocationCoordinate2DMake(-73.757201, 41.019267);
 //        var point4 = CLLocationCoordinate2DMake(-73.757482, 41.016375);
 //        var point5 = CLLocationCoordinate2DMake(-73.761105, 41.017791);
@@ -90,10 +86,12 @@ class ViewController: UIViewController, MKMapViewDelegate {
         var points: [CLLocationCoordinate2D]
         points = [point1, point2] //, point3, point4, point5]
         
-        var geodesic = MKGeodesicPolyline(coordinates: &points, count: points.count)
+        let geodesic = MKGeodesicPolyline(coordinates: &points, count: points.count)
         
+        let geodesic1 = MKPolyline(coordinates: &points, count: points.count)
         
         mapView.addOverlay(geodesic)
+        mapView.addOverlay(geodesic1)
         
 //        UIView.animateWithDuration(1.5, animations: { () -> Void in
 //            let span = MKCoordinateSpanMake(0.01, 0.01)
@@ -102,7 +100,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
 //        })
     }
 
-    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer! {
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKPolyline {
             let lineView = MKPolylineRenderer(overlay: overlay)
             
@@ -113,7 +111,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
             
             return lineView
         }
-        return nil
+        return MKOverlayRenderer()
+//        return nil
     }
 }
 
