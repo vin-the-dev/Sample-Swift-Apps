@@ -56,6 +56,12 @@ class GSSimpleImageView: UIImageView, POPAnimationDelegate {
         bgView.layer.pop_addAnimation(basicAnimation, forKey: "SomeAnimationNameYouChooseEnd")
     }
     
+    func pop_animationDidReachToValue(anim: POPAnimation!) {
+        if anim.name == "SomeAnimationNameYouChooseEnd" {
+            bgView.removeFromSuperview()
+        }
+    }
+    
     func pop_animationDidStop(anim: POPAnimation!, finished: Bool) {
         if anim.name == "SomeAnimationNameYouChooseEnd" {
             bgView.removeFromSuperview()

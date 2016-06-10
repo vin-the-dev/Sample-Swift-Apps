@@ -13,16 +13,26 @@ class ViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var _mapView: MKMapView!
     
+    @IBOutlet weak var _constraintBottomView: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self._constraintBottomView.constant = 125
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    @IBAction func bottomViewCloseTapped(sender: AnyObject) {
+        UIView.animateWithDuration(0.5, animations: {
+            self._constraintBottomView.constant = 125
+            self.view.layoutIfNeeded()
+            }, completion: nil)
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         let anno = MKPointAnnotation()
-        anno.title = "Delhi"
+        anno.title = "Thiruvananthapuram"
         anno.coordinate = CLLocationCoordinate2D(latitude: 28.6139, longitude: 77.2090)
         _mapView.addAnnotation(anno)
         // 28.6139° N, 77.2090° E
@@ -44,7 +54,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let tempView = UIView()
         
         let btn = UIButton()
-        btn.addTarget(self, action: #selector(ViewController.btnTapped), forControlEvents: UIControlEvents.TouchUpInside)
+        btn.addTarget(self, action: "btnTapped", forControlEvents: UIControlEvents.TouchUpInside)
         btn.backgroundColor = .redColor()
         btn.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         
@@ -62,11 +72,31 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         annoView.canShowCallout =  true
         
-        let lbl = UILabel(frame: CGRectMake(10, 0, 50, 20))
-        lbl.text = "Delhi"
-        lbl.textColor = UIColor.blueColor()
-        annoView.addSubview(lbl)
-        annoView.frame = lbl.frame
+        
+//        let lbl = UILabel(frame: CGRectMake(10, 0, 50, 20))
+//        lbl.text = "AVBSH ASJD AJSDHJKAS HDAHJK"
+//        lbl.backgroundColor = UIColor.redColor()
+//        lbl.textColor = UIColor.blueColor()
+//        
+//        annoView.addSubview(lbl)
+//        
+//        annoView.frame = lbl.frame
+        
+        let lblView = UIView.loadFromNibNamed("BottomView") as! BottomView
+        
+        let str: NSString =  "Thiruvananthapuram"
+//        let width = str.sizeWithAttributes(nil).width
+        
+        let size: CGSize = str.sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(12.0)])
+        
+        print(size)
+        
+        lblView.frame = CGRectMake(10, -10, 130, 10)
+        lblView._lbl.attributedText = NSAttributedString(string: str as String)
+        
+        annoView.addSubview(lblView)
+        
+        annoView.frame = lblView.frame
         
         return annoView
     }
@@ -74,6 +104,12 @@ class ViewController: UIViewController, MKMapViewDelegate {
     func btnTapped(){
         print("btnTapped")
         _mapView.deselectAnnotation(_mapView.annotations[0], animated: true)
+        
+        UIView.animateWithDuration(0.5, animations: {
+            self._constraintBottomView.constant = 0
+            self.view.layoutIfNeeded()
+            }, completion: nil)
+        
     }
     
     func createPolyline(mapView: MKMapView) {
