@@ -22,12 +22,12 @@ class ViewController: UIViewController, MKMapViewDelegate {
         super.viewDidAppear(animated)
         
         let anno = MKPointAnnotation()
-        anno.title = "Delhi"
+        anno.title = "Title"
         anno.coordinate = CLLocationCoordinate2D(latitude: 28.6139, longitude: 77.2090)
         _mapView.addAnnotation(anno)
         // 28.6139° N, 77.2090° E
         
-        createPolyline(_mapView)
+//        createPolyline(_mapView)
         
         
     }
@@ -36,37 +36,29 @@ class ViewController: UIViewController, MKMapViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+//    
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
-        let annoView = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+        let annoView = CustomAnnotationView(annotation: annotation, reuseIdentifier: "pin")
         
-        let tempView = UIView()
+        annoView.canShowCallout =  true
         
-        let btn = UIButton()
-        btn.addTarget(self, action: #selector(ViewController.btnTapped), forControlEvents: UIControlEvents.TouchUpInside)
-        btn.backgroundColor = .redColor()
-        btn.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        annoView.alpha = 0
+        UIView.animateWithDuration(0.5, animations: {
+            annoView.alpha = 1
+        })
         
-        tempView.backgroundColor = .greenColor()
+        let tempView = UIView.loadFromNibNamed("PopUpUIView") as! PopUpUIView
         
         let widthConstraint = NSLayoutConstraint(item: tempView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 200)
         tempView.addConstraint(widthConstraint)
         
-        let heightConstraint = NSLayoutConstraint(item: tempView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 150)
+        let heightConstraint = NSLayoutConstraint(item: tempView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 300)
         tempView.addConstraint(heightConstraint)
         
-        tempView.addSubview(btn)
+        tempView._btnClose.addTarget(self, action: #selector(ViewController.btnTapped), forControlEvents: UIControlEvents.TouchUpInside)
         
         annoView.detailCalloutAccessoryView =  tempView
-        
-        annoView.canShowCallout =  true
-        
-        let lbl = UILabel(frame: CGRectMake(10, 0, 50, 20))
-        lbl.text = "Delhi"
-        lbl.textColor = UIColor.blueColor()
-        annoView.addSubview(lbl)
-        annoView.frame = lbl.frame
         
         return annoView
     }
@@ -115,4 +107,3 @@ class ViewController: UIViewController, MKMapViewDelegate {
 //        return nil
     }
 }
-

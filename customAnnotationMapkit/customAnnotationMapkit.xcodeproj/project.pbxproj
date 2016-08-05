@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		362F1C4C1D0C9483003AD831 /* PopUpUIView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 362F1C4B1D0C9483003AD831 /* PopUpUIView.xib */; };
+		362F1C4E1D0C95A6003AD831 /* PopupViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 362F1C4D1D0C95A6003AD831 /* PopupViewTableViewCell.xib */; };
+		362F1C501D0C9852003AD831 /* PopUpUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362F1C4F1D0C9852003AD831 /* PopUpUIView.swift */; };
+		362F1C521D0C9CB8003AD831 /* PopupViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362F1C511D0C9CB8003AD831 /* PopupViewTableViewCell.swift */; };
+		362F1C541D0CA2C7003AD831 /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362F1C531D0CA2C7003AD831 /* CustomAnnotationView.swift */; };
+		362F1C561D0CA37F003AD831 /* PopupLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 362F1C551D0CA37F003AD831 /* PopupLabelView.xib */; };
+		362F1C581D0CA40A003AD831 /* PopupLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362F1C571D0CA40A003AD831 /* PopupLabelView.swift */; };
+		363D80A91D0D4AC400C064D9 /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363D80A81D0D4AC400C064D9 /* CommonExtensions.swift */; };
 		36785B011D02811F0081B6B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36785B001D02811F0081B6B3 /* AppDelegate.swift */; };
 		36785B031D02811F0081B6B3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36785B021D02811F0081B6B3 /* ViewController.swift */; };
 		36785B061D02811F0081B6B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36785B041D02811F0081B6B3 /* Main.storyboard */; };
@@ -16,6 +24,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		362F1C4B1D0C9483003AD831 /* PopUpUIView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopUpUIView.xib; sourceTree = "<group>"; };
+		362F1C4D1D0C95A6003AD831 /* PopupViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupViewTableViewCell.xib; sourceTree = "<group>"; };
+		362F1C4F1D0C9852003AD831 /* PopUpUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpUIView.swift; sourceTree = "<group>"; };
+		362F1C511D0C9CB8003AD831 /* PopupViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewTableViewCell.swift; sourceTree = "<group>"; };
+		362F1C531D0CA2C7003AD831 /* CustomAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
+		362F1C551D0CA37F003AD831 /* PopupLabelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupLabelView.xib; sourceTree = "<group>"; };
+		362F1C571D0CA40A003AD831 /* PopupLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupLabelView.swift; sourceTree = "<group>"; };
+		363D80A81D0D4AC400C064D9 /* CommonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonExtensions.swift; sourceTree = "<group>"; };
 		36785AFD1D02811F0081B6B3 /* customAnnotationMapkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = customAnnotationMapkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36785B001D02811F0081B6B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36785B021D02811F0081B6B3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,12 +74,20 @@
 		36785AFF1D02811F0081B6B3 /* customAnnotationMapkit */ = {
 			isa = PBXGroup;
 			children = (
+				362F1C531D0CA2C7003AD831 /* CustomAnnotationView.swift */,
 				36785B001D02811F0081B6B3 /* AppDelegate.swift */,
 				36785B021D02811F0081B6B3 /* ViewController.swift */,
 				36785B041D02811F0081B6B3 /* Main.storyboard */,
 				36785B071D02811F0081B6B3 /* Assets.xcassets */,
 				36785B091D02811F0081B6B3 /* LaunchScreen.storyboard */,
 				36785B0C1D02811F0081B6B3 /* Info.plist */,
+				362F1C4B1D0C9483003AD831 /* PopUpUIView.xib */,
+				362F1C4F1D0C9852003AD831 /* PopUpUIView.swift */,
+				362F1C4D1D0C95A6003AD831 /* PopupViewTableViewCell.xib */,
+				362F1C511D0C9CB8003AD831 /* PopupViewTableViewCell.swift */,
+				362F1C551D0CA37F003AD831 /* PopupLabelView.xib */,
+				362F1C571D0CA40A003AD831 /* PopupLabelView.swift */,
+				363D80A81D0D4AC400C064D9 /* CommonExtensions.swift */,
 			);
 			path = customAnnotationMapkit;
 			sourceTree = "<group>";
@@ -132,7 +156,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				36785B0B1D02811F0081B6B3 /* LaunchScreen.storyboard in Resources */,
+				362F1C4C1D0C9483003AD831 /* PopUpUIView.xib in Resources */,
 				36785B081D02811F0081B6B3 /* Assets.xcassets in Resources */,
+				362F1C4E1D0C95A6003AD831 /* PopupViewTableViewCell.xib in Resources */,
+				362F1C561D0CA37F003AD831 /* PopupLabelView.xib in Resources */,
 				36785B061D02811F0081B6B3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,8 +171,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				362F1C501D0C9852003AD831 /* PopUpUIView.swift in Sources */,
+				362F1C541D0CA2C7003AD831 /* CustomAnnotationView.swift in Sources */,
+				362F1C581D0CA40A003AD831 /* PopupLabelView.swift in Sources */,
+				362F1C521D0C9CB8003AD831 /* PopupViewTableViewCell.swift in Sources */,
 				36785B031D02811F0081B6B3 /* ViewController.swift in Sources */,
 				36785B011D02811F0081B6B3 /* AppDelegate.swift in Sources */,
+				363D80A91D0D4AC400C064D9 /* CommonExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +329,7 @@
 				36785B111D02811F0081B6B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
