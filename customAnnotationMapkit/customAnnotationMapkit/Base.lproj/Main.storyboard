@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -23,21 +22,58 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="9Sc-9d-GVg"/>
                                 </connections>
                             </mapView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="teR-5d-wvt">
+                                <rect key="frame" x="0.0" y="500" width="600" height="100"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tCW-hY-GCs">
+                                        <rect key="frame" x="542" y="-25" width="50" height="50"/>
+                                        <subviews>
+                                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7U-I7-7UA">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <action selector="bottomViewCloseTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eG1-5w-ABG"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.97647058819999999" green="0.34901960780000002" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="F7U-I7-7UA" firstAttribute="width" secondItem="tCW-hY-GCs" secondAttribute="width" id="0zQ-fQ-sZq"/>
+                                            <constraint firstAttribute="height" constant="50" id="ATK-KQ-ZZm"/>
+                                            <constraint firstItem="F7U-I7-7UA" firstAttribute="height" secondItem="tCW-hY-GCs" secondAttribute="height" id="D9a-kp-jnG"/>
+                                            <constraint firstItem="F7U-I7-7UA" firstAttribute="centerY" secondItem="tCW-hY-GCs" secondAttribute="centerY" id="gVs-vh-8e6"/>
+                                            <constraint firstAttribute="width" constant="50" id="mlY-c7-4Lm"/>
+                                            <constraint firstItem="F7U-I7-7UA" firstAttribute="centerX" secondItem="tCW-hY-GCs" secondAttribute="centerX" id="nAw-Ji-n6Q"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.3803921569" green="0.87858677600000001" blue="0.4745062766" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="tCW-hY-GCs" firstAttribute="top" secondItem="teR-5d-wvt" secondAttribute="top" constant="-25" id="Arh-WQ-aKM"/>
+                                    <constraint firstAttribute="trailing" secondItem="tCW-hY-GCs" secondAttribute="trailing" constant="8" id="NWe-XN-gmc"/>
+                                    <constraint firstAttribute="height" constant="100" id="dow-BH-SfY"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="P21-Xf-oUx" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="19n-cP-Z0B"/>
                             <constraint firstItem="P21-Xf-oUx" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="75c-3b-cDR"/>
+                            <constraint firstItem="teR-5d-wvt" firstAttribute="bottom" secondItem="P21-Xf-oUx" secondAttribute="bottom" id="Abk-xV-red"/>
+                            <constraint firstItem="teR-5d-wvt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dS5-tB-Goz"/>
                             <constraint firstItem="P21-Xf-oUx" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="xoJ-1N-u0b"/>
+                            <constraint firstItem="teR-5d-wvt" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="ya0-Xg-tpd"/>
                             <constraint firstItem="P21-Xf-oUx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zF5-y4-Usm"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="_constraintBottomView" destination="Abk-xV-red" id="Rig-Jy-Byg"/>
                         <outlet property="_mapView" destination="P21-Xf-oUx" id="pYv-xd-JHm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="288" y="163"/>
         </scene>
     </scenes>
 </document>
