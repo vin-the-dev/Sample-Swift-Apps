@@ -86,30 +86,30 @@ class ViewController: UIViewController, MKMapViewDelegate {
         annoView.canShowCallout =  true
         
         
-//        let lbl = UILabel(frame: CGRectMake(10, 0, 50, 20))
-//        lbl.text = "AVBSH ASJD AJSDHJKAS HDAHJK"
+        let lbl = UILabel(frame: CGRectMake(10, 0, 100, 20))
+        lbl.text = "AVBSH ASJD AJSDHJKAS HDAHJK"
 //        lbl.backgroundColor = UIColor.redColor()
-//        lbl.textColor = UIColor.blueColor()
+        lbl.textColor = UIColor.blueColor()
+        
+        annoView.addSubview(lbl)
+        
+        annoView.frame = lbl.frame
+        
+//        let lblView = UIView.loadFromNibNamed("BottomView") as! BottomView
 //        
-//        annoView.addSubview(lbl)
+//        let str: NSString =  "Thiruvananthapuram"
+////        let width = str.sizeWithAttributes(nil).width
 //        
-//        annoView.frame = lbl.frame
-        
-        let lblView = UIView.loadFromNibNamed("BottomView") as! BottomView
-        
-        let str: NSString =  "Thiruvananthapuram"
-//        let width = str.sizeWithAttributes(nil).width
-        
-        let size: CGSize = str.sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(12.0)])
-        
-        print(size)
-        
-        lblView.frame = CGRectMake(10, -10, 130, 10)
-        lblView._lbl.attributedText = NSAttributedString(string: str as String)
-        
-        annoView.addSubview(lblView)
-        
-        annoView.frame = lblView.frame
+//        let size: CGSize = str.sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(12.0)])
+//        
+//        print(size)
+//        
+//        lblView.frame = CGRectMake(10, -10, 130, 10)
+//        lblView._lbl.attributedText = NSAttributedString(string: str as String)
+//        
+//        annoView.addSubview(lblView)
+//        
+//        annoView.frame = lblView.frame
         
 >>>>>>> origin/master
         return annoView
