@@ -12,8 +12,9 @@ import UIKit
 class NewViewController: UIViewController, UITableViewDelegate , UITableViewDataSource {
     
     
-    var cellTapped:Bool = true
-    var currentRow = 0;
+    var cellTapped: Bool = false
+    var currentRow = -1;
+    var isAnimated: Bool = false
     
     @IBOutlet weak var _tableView: UITableView!
     
@@ -43,11 +44,11 @@ class NewViewController: UIViewController, UITableViewDelegate , UITableViewData
         print(indexPath.row)
         UIView.animateWithDuration(0.5, animations: {
             if indexPath.row == self.currentRow {
-                print("current row activated")
-                cell._expandBtnTopConstraint.priority = 1
-                cell._expandBtnBottomConstraint.priority = 999
-                cell._expandBtnTrailingConstraint.priority = 1
-                cell._expandBtnleadingConstraint.priority = 999
+                    print("current row activated")
+                    cell._expandBtnTopConstraint.priority = 1
+                    cell._expandBtnBottomConstraint.priority = 999
+                    cell._expandBtnTrailingConstraint.priority = 1
+                    cell._expandBtnleadingConstraint.priority = 999
             }
             else{
                 print("old row deactivated")
